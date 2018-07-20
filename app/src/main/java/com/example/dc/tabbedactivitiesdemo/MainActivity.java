@@ -57,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setBackgroundColor(Color.WHITE);
         tabLayout.setTabTextColors(Color.BLACK, Color.BLACK);
+        tabLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "Tabbed clicked", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -111,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
            switch (position){
                case 0:
-                   Tab1Sort sortTab = new Tab1Sort();
-                   return sortTab;
+                  Tab1Sort sortTab = new Tab1Sort();
+                  return sortTab;
                case 1:
                    Tab2Filter filterTab = new Tab2Filter();
                    return filterTab;
